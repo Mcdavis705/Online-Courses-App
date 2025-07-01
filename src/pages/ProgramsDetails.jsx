@@ -1,6 +1,6 @@
 import { Container, ListGroup, ListGroupItem, Button } from 'react-bootstrap';
-import {useParams} from 'react-router';
-import {courses} from './Courses.jsx';
+import { useParams } from 'react-router';
+import { courses } from './Courses.jsx';
 
 const style =
 {
@@ -21,13 +21,20 @@ const style =
 
 
 function Programs() {
-    const {id} = useParams();
+    const { id } = useParams();
     const course = courses.find(course => course.id === parseInt(id));
-        
+    if (!course) {
+        return <div>Course not found</div>
+    }
 
     return (
         <Container style={style}>
-            
+            <div>Course Details: 
+                <h2>{course.titulo}</h2>
+                <p>{course.descripcion}</p>
+                <p>Category: {course.categoria}</p>
+                <p>Level: {course.nivel}</p>
+            </div>
         </Container>
     )
 

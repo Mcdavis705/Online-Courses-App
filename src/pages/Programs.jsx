@@ -1,6 +1,7 @@
-import { Container, ListGroup, ListGroupItem, Button } from 'react-bootstrap';
+import { Container, ListGroup, ListGroupItem, Button, Card, Dropdown, DropdownButton } from 'react-bootstrap';
 import { useParams, Link } from 'react-router';
 import { courses } from './Courses.jsx';
+
 
 
 
@@ -23,18 +24,16 @@ const style =
 }
 
 const courseList = courses.map(course => (
-    <ListGroupItem 
-        key={course.id}
-        className="d-flex justify-content-between align-items-center"
-    >
-        <Link to={`/courses/${course.id}`}>
-            {course.titulo}
-        </Link>
-        {/* <Button variant="primary" 
-        >
-            View
-        </Button> */}
-    </ListGroupItem>
+    <Card key={course.id} className="mb-3">
+        <Card.Body className="d-flex justify-content-between align-items-center">
+            <div>
+                <Card.Title>{course.titulo}</Card.Title>
+            </div>
+            <Link to={`/Programs/${course.id}`}>
+                <Button variant="primary">View</Button>
+            </Link>
+        </Card.Body>
+    </Card>
 ));
 
 function Programs() {
@@ -46,7 +45,34 @@ function Programs() {
         <Container style={style}>
             <h1>Available Courses</h1>
             <br />
-            <p>Click “View” to learn more about each course and start your learning journey today.</p>
+            <p>Select a  course and start your learning journey today.</p>
+            <br />
+
+            <div className="row d-flex justify-content-center">
+                <Dropdown className="col mb-3">
+                    <Dropdown.Toggle variant="outline-success" id="dropdown-basic">
+                        Categoria
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                        <Dropdown.Item>Front End</Dropdown.Item>
+                        <Dropdown.Item>Back End</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
+
+                <Dropdown className="col mb-3">
+                    <Dropdown.Toggle variant="outline-success" id="dropdown-basic">
+                        Course level
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                        <Dropdown.Item>Basico</Dropdown.Item>
+                        <Dropdown.Item> Avanzado</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
+            </div>
+
+
             <ListGroup>
                 {courseList}
             </ListGroup>
