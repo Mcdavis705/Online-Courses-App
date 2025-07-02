@@ -11,13 +11,16 @@ function App() {
       <Navbar bg="light" expand="lg" style={{ borderBottom: '1px solid black' }}>
         <Container >
           <Navbar.Brand>
-            <img
-              alt="Logo"
-              src="/images/logo1.png"
-              width="30"
-              height="30"
-              className="d-inline-block align-top"
-            />
+            <Link to="/">
+              <img
+                alt="Logo"
+                src="/images/logo1.png"
+                width="30"
+                height="30"
+                className="d-inline-block align-top"
+              />
+            </Link>
+
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
@@ -29,7 +32,7 @@ function App() {
             <Button><Link to="LogIn" className="nav-link">Log In</Link></Button>
           </Navbar.Collapse>
         </Container>
-        
+
       </Navbar>
       <Container>
         <Outlet />

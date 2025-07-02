@@ -24,7 +24,7 @@ function Programs() {
     const { id } = useParams();
     const course = courses.find(course => course.id === parseInt(id));
     if (!course) {
-        return <div>Course not found</div>
+        return <h1 style={style}>Course not found</h1>
     }
 
     return (
