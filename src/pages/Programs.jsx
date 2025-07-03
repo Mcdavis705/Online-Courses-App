@@ -60,6 +60,8 @@ function Programs() {
                         <Dropdown.Item onClick={() => setSearchParams({})}>All Courses</Dropdown.Item>
                         <Dropdown.Item onClick={() => handleCategoryChange('frontend')}>Front End</Dropdown.Item>
                         <Dropdown.Item onClick={() => handleCategoryChange('backend')}>Back End</Dropdown.Item>
+                        <Dropdown.Item onClick={() => handleCategoryChange('devops')}>DevOps</Dropdown.Item>
+                        <Dropdown.Item onClick={() => handleCategoryChange('herramientas')}>Herramientos</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
 
@@ -70,6 +72,7 @@ function Programs() {
                     <Dropdown.Menu>
                         <Dropdown.Item onClick={() => setSearchParams()}>All Levels</Dropdown.Item>
                         <Dropdown.Item onClick={() => handleLevelChange('basico')}>Basico</Dropdown.Item>
+                        <Dropdown.Item onClick={() => handleLevelChange('intermedio')}>Intermedio</Dropdown.Item>
                         <Dropdown.Item onClick={() => handleLevelChange('avanzado')}>Avanzado</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
