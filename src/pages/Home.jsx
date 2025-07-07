@@ -1,9 +1,15 @@
 import { Container, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { useTheme } from '../context/ThemeContext'; 
+import { useTheme } from '../context/ThemeContext';
+import { useContext } from 'react';
+import { LanguageContext } from '../context/LanguageContext';
+import { translations } from '../assets/i18n';
 
 function Home() {
   const { isDarkMode } = useTheme(); 
+
+  const { lang, setLang } = useContext(LanguageContext);
+  const t = translations[lang];
 
   const style = {
     backgroundColor: isDarkMode ? '#1e1e1e' : '#f8f9fa',
@@ -23,11 +29,11 @@ function Home() {
 
   return (
     <Container style={style}>
-      <h1>Explore Online Courses</h1>
+      <h1>{t.homeTitle}</h1>
       <br />
-      <p>Welcome to our online course platform! Select a course to start your learning journey.</p>
+      <p>{t.homeMessage}</p>
       <Link to="Programs">
-        <Button variant={isDarkMode ? 'light' : 'primary'}>Select a course</Button>
+        <Button variant={isDarkMode ? 'light' : 'primary'}>{t.selectCourse}</Button>
       </Link>
     </Container>
   );

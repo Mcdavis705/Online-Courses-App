@@ -1,10 +1,16 @@
 import { useNavigate } from "react-router-dom";
 import { Container, Form, Button } from 'react-bootstrap';
 import { useTheme } from '../context/ThemeContext';
+import { useContext } from 'react';
+import { LanguageContext } from '../context/LanguageContext';
+import { translations } from '../assets/i18n';
+
 
 function Login() {
   const { isDarkMode } = useTheme();
   const navigate = useNavigate();
+  const { lang, setLang } = useContext(LanguageContext);
+  const t = translations[lang];
 
   const style = {
     backgroundColor: isDarkMode ? '#121212' : '#f8f9fa',
@@ -30,7 +36,7 @@ function Login() {
 
   return (
     <Container style={style}>
-      <h1>Login</h1>
+      <h1>{t.login}</h1>
       <Form.Label></Form.Label>
       <Form.Control
         type="text"
@@ -57,7 +63,7 @@ function Login() {
       <Form.Text id="passwordHelpBlock" muted></Form.Text>
       <br />
       <Button variant={isDarkMode ? 'light' : 'primary'} onClick={handleLogin}>
-        Log In
+        {t.login}
       </Button>
     </Container>
   );

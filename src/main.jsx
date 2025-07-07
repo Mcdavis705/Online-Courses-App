@@ -12,28 +12,31 @@ import LogIn from './pages/LogIn';
 import Admin from './pages/Admin';
 import NotFound from './pages/NotFound';
 import ProgramsDetails from './pages/ProgramsDetails';
-
-// Import  ThemeProvider
-import { ThemeProvider } from './context/ThemeContext'; 
+ 
+// Import  Providers
+import { ThemeProvider } from './context/ThemeContext';
+import { LanguageProvider } from './context/LanguageContext.jsx';
 
 // Mount the app to the DOM
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <ThemeProvider>
-      <BrowserRouter>
+      <LanguageProvider>
+        <BrowserRouter>
 
-        <Routes>
-          <Route path="/" element={<App />}>
-            <Route index element={<Home />} />
-            <Route path="Programs" element={<Programs />} />
-            <Route path="Programs/:id" element={<ProgramsDetails />} />
-            <Route path="LogIn" element={<LogIn />} />
-            <Route path="Admin" element={<Admin />} />
+          <Routes>
+            <Route path="/" element={<App />}>
+              <Route index element={<Home />} />
+              <Route path="Programs" element={<Programs />} />
+              <Route path="Programs/:id" element={<ProgramsDetails />} />
+              <Route path="LogIn" element={<LogIn />} />
+              <Route path="Admin" element={<Admin />} />
 
-            <Route path="*" element={<NotFound />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+              <Route path="*" element={<NotFound />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </LanguageProvider>
     </ThemeProvider>
   </StrictMode>
 );

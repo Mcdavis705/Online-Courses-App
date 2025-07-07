@@ -1,10 +1,16 @@
 import { useSearchParams, Navigate } from "react-router-dom";
 import { useTheme } from '../context/ThemeContext';
+import { LanguageContext } from "../context/LanguageContext";
+import { translations } from "../assets/i18n";
+import { useContext } from "react";
 
 function Admin() {
   const { isDarkMode } = useTheme();
   const [searchParams] = useSearchParams();
   const auth = searchParams.get('auth') === 'true';
+
+  const { lang } = useContext(LanguageContext);
+  const t = translations[lang] || translations['en'];
 
   if (!auth) {
     return <Navigate to='/LogIn' replace />;
@@ -26,12 +32,14 @@ function Admin() {
     alignItems: 'center',
     flexDirection: 'column',
     textDecoration: 'none',
+    transition: 'opacity 0.5s ease-in-out'
   };
 
   return (
-    <div style={style}>
-      <h1>Welcome to Admin Page</h1>
-    </div>
+    <main style={style}>
+      <h1>{t.admin}</h1>
+      <p>{t.welcomeAdmin}</p>
+    </main>
   );
 }
 

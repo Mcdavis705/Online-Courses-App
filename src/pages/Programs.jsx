@@ -2,9 +2,14 @@ import { Container, ListGroup, Button, Card, Dropdown } from 'react-bootstrap';
 import { useParams, Link, useSearchParams } from 'react-router-dom';
 import { courses } from './Courses.jsx';
 import { useTheme } from '../context/ThemeContext';
+import { LanguageContext } from '../context/LanguageContext';
+import { translations } from '../assets/i18n';
+import { useContext } from 'react';
 
 function Programs() {
   const { isDarkMode } = useTheme();
+  const { lang, setLang } = useContext(LanguageContext);
+  const t = translations[lang];
 
   const style = {
     backgroundColor: isDarkMode ? 'black' : 'whitesmoke',
@@ -61,9 +66,9 @@ function Programs() {
 
   return (
     <Container style={style}>
-      <h1>Available Courses</h1>
+      <h1>{t.programsTitle}</h1>
       <br />
-      <p>Select a course and start your learning journey today.</p>
+      <p>{t.programsMessage}</p>
       <br />
 
       <div className="row d-flex justify-content-center" style={{ width: '100%', gap: '1rem' }}>
@@ -73,7 +78,7 @@ function Programs() {
             id="dropdown-category"
             style={{ color: isDarkMode ? 'white' : undefined }}
           >
-            {category ? category.charAt(0).toUpperCase() + category.slice(1) : 'Category'}
+            {category ? category.charAt(0).toUpperCase() + category.slice(1) : t.category}
           </Dropdown.Toggle>
           <Dropdown.Menu style={{ backgroundColor: isDarkMode ? 'dimgray' : 'white' }}>
             <Dropdown.Item onClick={clearCategory}>All Courses</Dropdown.Item>
@@ -90,7 +95,7 @@ function Programs() {
             id="dropdown-level"
             style={{ color: isDarkMode ? 'white' : undefined }}
           >
-            {level ? level.charAt(0).toUpperCase() + level.slice(1) : 'Course Level'}
+            {level ? level.charAt(0).toUpperCase() + level.slice(1) : t.courseLevel}
           </Dropdown.Toggle>
           <Dropdown.Menu style={{ backgroundColor: isDarkMode ? 'dimgray' : 'white' }}>
             <Dropdown.Item onClick={clearLevel}>All Levels</Dropdown.Item>
