@@ -16,7 +16,7 @@ export const LanguageProvider = ({ children }) => {
         localStorage.setItem('lang', newLang)
     };
 
-    console.log('lang',lang )
+    // console.log('lang',lang )
     return (
         <LanguageContext.Provider value={{ lang, setLang: changeLang }}>
             {children}
